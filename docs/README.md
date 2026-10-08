@@ -48,6 +48,8 @@ Pulse — система транспортного планирования и 
 - [driver-and-crew.md](driver-and-crew.md)
 - [rail-operations.md](rail-operations.md)
 - [capacity-model.md](capacity-model.md)
+- [reliability-model.md](reliability-model.md) — распределения времени, квантили и надёжность пересадок.
+- [service-blocks.md](service-blocks.md) — блоки движения и эксплуатационная выполнимость.
 - [bunching-model.md](bunching-model.md)
 - [headway-control.md](headway-control.md)
 - [transit-priority.md](transit-priority.md)
@@ -67,6 +69,7 @@ Pulse — система транспортного планирования и 
 
 - [mathematical-model.md](mathematical-model.md)
 - [mathematical-contracts.md](mathematical-contracts.md) — обязательные контракты расчётных моделей.
+- [mvp-acceptance.md](mvp-acceptance.md) — критерии доказательной приёмки математического MVP.
 - [calculation-pipeline.md](calculation-pipeline.md)
 - [units-and-conventions.md](units-and-conventions.md)
 - [kpi-formulas.md](kpi-formulas.md)
