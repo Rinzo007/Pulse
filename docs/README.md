@@ -66,12 +66,14 @@ Pulse — система транспортного планирования и 
 ## 6. Математические модели
 
 - [mathematical-model.md](mathematical-model.md)
+- [mathematical-contracts.md](mathematical-contracts.md) — обязательные контракты расчётных моделей.
 - [calculation-pipeline.md](calculation-pipeline.md)
 - [units-and-conventions.md](units-and-conventions.md)
 - [kpi-formulas.md](kpi-formulas.md)
 - [waiting-model.md](waiting-model.md)
 - [demand-assignment.md](demand-assignment.md)
 - [calibration-methodology.md](calibration-methodology.md)
+- [calibration-matrix.md](calibration-matrix.md) — разделение calibration/validation/holdout и матрица метрик.
 - [optimization-methodology.md](optimization-methodology.md)
 - [scenario-comparison.md](scenario-comparison.md)
 
@@ -79,7 +81,7 @@ Pulse — система транспортного планирования и 
 
 - [simulation-model.md](simulation-model.md)
 - [sumo.md](sumo.md)
-- [experiment-design.md](experiment-design.md)
+- [experiment-design.md](experiment-design.md) — иерархия Experiment/Scenario/SimulationRun и репликации.
 
 ## 8. Сценарии и проектирование
 
