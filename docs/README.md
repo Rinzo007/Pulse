@@ -123,6 +123,7 @@ Pulse — система транспортного планирования и 
 - [operations.md](operations.md)
 - [security-and-governance.md](security-and-governance.md)
 - [ai-assistant.md](ai-assistant.md)
+- [ai-model-prompt.md](ai-model-prompt.md) — системный промпт ИИ-модели Pulse.
 
 ## 13. Основные принципы
 
