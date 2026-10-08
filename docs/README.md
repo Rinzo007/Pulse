@@ -2,52 +2,137 @@
 
 Pulse — система транспортного планирования и моделирования города и пригорода с приоритетом общественного транспорта.
 
-Документация описывает **что должна моделировать система, какие данные ей нужны, как связаны модели и как проверяются результаты**. Реализация является отдельным слоем и не должна менять смысл моделей без изменения спецификаций.
+Документация фиксирует предметную область, математические модели, источники данных, расчётный конвейер, правила валидации и границы применимости результатов. Реализация является отдельным слоем и не должна менять смысл моделей без изменения спецификаций.
 
-## Основной цикл
+## Сквозной цикл
 
-**Город → землепользование → население → транспортные районы → генерация поездок → OD → выбор вида транспорта → выбор маршрута → сеть ОТ → расписания → пассажиры → пересадки → дорожное движение → SUMO → задержки/переполнение → качество поездки → изменение спроса → оценка → проектное решение → новый сценарий → сравнение.**
+**Землепользование → население и активности → транспортные районы → генерация → распределение спроса → выбор времени → выбор вида транспорта → выбор маршрута → транспортная сеть → ОТ → расписания → эксплуатация → пассажиры → движение → SUMO → задержки/переполнение → качество поездки → обратная связь спроса → KPI → неопределённость → экономическая и социальная оценка → проектное решение → новый сценарий.**
 
-## Документы
+## 1. Назначение и архитектура
 
-- [vision.md](vision.md) — назначение и границы системы.
+- [vision.md](vision.md) — назначение и границы.
 - [requirements.md](requirements.md) — функциональные и нефункциональные требования.
-- [domain-model.md](domain-model.md) — предметная модель и сущности.
 - [architecture.md](architecture.md) — архитектура и границы подсистем.
-- [network-model.md](network-model.md) — дорожная, пешеходная, велосипедная и транзитная сети.
-- [transport-model.md](transport-model.md) — виды транспорта и эксплуатационная модель.
-- [demand-model.md](demand-model.md) — население, поездки, OD и выбор вида транспорта.
-- [passenger-model.md](passenger-model.md) — путь пассажира от двери до двери.
-- [public-transport.md](public-transport.md) — маршруты, остановки, интервалы и пассажиропотоки.
-- [scheduling.md](scheduling.md) — расписания, оборот, выпуск и управление интервалами.
-- [fleet-and-depots.md](fleet-and-depots.md) — подвижной состав и депо.
-- [transit-priority.md](transit-priority.md) — приоритет общественного транспорта.
-- [simulation-model.md](simulation-model.md) — роль SUMO и микроскопической симуляции.
-- [route-planning.md](route-planning.md) — построение и выбор маршрутов.
-- [scenarios.md](scenarios.md) — сценарии, версии и сравнение.
-- [optimization.md](optimization.md) — оптимизация и ограничения.
-- [calibration.md](calibration.md) — калибровка и валидация.
-- [kpi.md](kpi.md) — показатели эффективности.
-- [accessibility.md](accessibility.md) — транспортная доступность.
-- [economics.md](economics.md) — CAPEX/OPEX и экономическая оценка.
-- [data-sources.md](data-sources.md) — источники и происхождение данных.
-- [synthetic-data.md](synthetic-data.md) — синтетический город и синтетический спрос.
-- [osm.md](osm.md) — использование OpenStreetMap.
-- [sumo.md](sumo.md) — требования к интеграции с SUMO.
-- [api.md](api.md) — границы API.
-- [database.md](database.md) — логическая модель хранения.
-- [frontend.md](frontend.md) — требования к веб-интерфейсу.
-- [reproducibility.md](reproducibility.md) — воспроизводимость.
-- [validation.md](validation.md) — физические и логические проверки.
-- [testing.md](testing.md) — стратегия тестирования.
+- [domain-model.md](domain-model.md) — предметная модель.
+- [implementation-boundaries.md](implementation-boundaries.md) — границы отдельных моделей.
 - [roadmap.md](roadmap.md) — последовательность разработки.
-- [glossary.md](glossary.md) — единая терминология.
+- [glossary.md](glossary.md) — терминология.
 
-## Принципы
+## 2. Территория, население и спрос
 
-1. Реальные, синтетические и калиброванные данные всегда различаются.
+- [land-use-and-activities.md](land-use-and-activities.md)
+- [population-and-agents.md](population-and-agents.md)
+- [activity-based-demand.md](activity-based-demand.md)
+- [demand-model.md](demand-model.md)
+- [traffic-assignment.md](traffic-assignment.md)
+- [future-demand.md](future-demand.md)
+- [synthetic-data.md](synthetic-data.md)
+
+## 3. Транспортная сеть
+
+- [network-model.md](network-model.md)
+- [walking-cycling.md](walking-cycling.md)
+- [traffic-signals.md](traffic-signals.md)
+- [parking-and-pr.md](parking-and-pr.md)
+- [freight-and-commercial.md](freight-and-commercial.md)
+
+## 4. Общественный транспорт
+
+- [transport-model.md](transport-model.md)
+- [public-transport.md](public-transport.md)
+- [gtfs-and-transit-data.md](gtfs-and-transit-data.md)
+- [route-planning.md](route-planning.md)
+- [route-choice.md](route-choice.md)
+- [scheduling.md](scheduling.md)
+- [fleet-and-depots.md](fleet-and-depots.md)
+- [driver-and-crew.md](driver-and-crew.md)
+- [rail-operations.md](rail-operations.md)
+- [capacity-model.md](capacity-model.md)
+- [bunching-model.md](bunching-model.md)
+- [headway-control.md](headway-control.md)
+- [transit-priority.md](transit-priority.md)
+- [transfer-model.md](transfer-model.md)
+- [service-quality.md](service-quality.md)
+- [fares-and-ticketing.md](fares-and-ticketing.md)
+- [disruptions.md](disruptions.md)
+
+## 5. Пассажир и выбор
+
+- [passenger-model.md](passenger-model.md)
+- [mode-choice.md](mode-choice.md)
+- [accessibility.md](accessibility.md)
+- [accessibility-formulas.md](accessibility-formulas.md)
+
+## 6. Математические модели
+
+- [mathematical-model.md](mathematical-model.md)
+- [calculation-pipeline.md](calculation-pipeline.md)
+- [units-and-conventions.md](units-and-conventions.md)
+- [kpi-formulas.md](kpi-formulas.md)
+- [waiting-model.md](waiting-model.md)
+- [demand-assignment.md](demand-assignment.md)
+- [calibration-methodology.md](calibration-methodology.md)
+- [optimization-methodology.md](optimization-methodology.md)
+- [scenario-comparison.md](scenario-comparison.md)
+
+## 7. Симуляция
+
+- [simulation-model.md](simulation-model.md)
+- [sumo.md](sumo.md)
+- [experiment-design.md](experiment-design.md)
+
+## 8. Сценарии и проектирование
+
+- [scenarios.md](scenarios.md)
+- [optimization.md](optimization.md)
+- [route-planning.md](route-planning.md)
+- [health-check.md](health-check.md)
+
+## 9. Калибровка, проверка и неопределённость
+
+- [calibration.md](calibration.md)
+- [model-estimation.md](model-estimation.md)
+- [validation.md](validation.md)
+- [testing.md](testing.md)
+- [uncertainty.md](uncertainty.md)
+- [assumptions.md](assumptions.md)
+- [reproducibility.md](reproducibility.md)
+- [data-lineage.md](data-lineage.md)
+
+## 10. Экономика, окружающая среда и общественный эффект
+
+- [economics.md](economics.md)
+- [economic-appraisal.md](economic-appraisal.md)
+- [emissions-and-energy.md](emissions-and-energy.md)
+- [safety.md](safety.md)
+- [accessibility.md](accessibility.md)
+- [reporting.md](reporting.md)
+
+## 11. Данные
+
+- [data-sources.md](data-sources.md)
+- [osm.md](osm.md)
+- [gtfs-and-transit-data.md](gtfs-and-transit-data.md)
+- [data-lineage.md](data-lineage.md)
+
+## 12. Система и интерфейс
+
+- [api.md](api.md)
+- [database.md](database.md)
+- [frontend.md](frontend.md)
+- [operations.md](operations.md)
+- [security-and-governance.md](security-and-governance.md)
+- [ai-assistant.md](ai-assistant.md)
+
+## 13. Основные принципы
+
+1. Реальные, синтетические, производные и калиброванные данные различаются.
 2. Эвристика не называется доказанным оптимумом.
 3. Без калибровки нельзя заявлять реалистичность численных результатов.
-4. Каждый сценарий воспроизводим по входным данным, параметрам и версии модели.
-5. SUMO является компонентом Pulse, а не заменяет модель спроса, пассажира или эксплуатации.
-6. Все рекомендации должны иметь причину, ожидаемый эффект, стоимость, риски и возможность проверки симуляцией.
+4. Каждый результат привязан к версии входных данных, параметров, сценария и модели.
+5. SUMO отвечает за микроскопическую динамику и не заменяет спрос, пассажира, эксплуатацию или оценку.
+6. Спрос и предложение взаимодействуют итеративно там, где это требуется постановкой.
+7. Средние значения не должны скрывать локальные проблемы, переполнение, неравенство доступности или ненадёжность.
+8. Сценарии должны проверяться на физическую выполнимость до симуляции.
+9. Результат симуляции является результатом заданной модели и входов, а не автоматически фактом о реальном городе.
+10. ИИ может объяснять и предлагать изменения, но не превращает модельный вывод в наблюдение или утверждённое проектное решение.
